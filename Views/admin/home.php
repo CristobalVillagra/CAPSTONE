@@ -1,4 +1,5 @@
-<?php include_once 'Views/templates/header.php'; ?>
+<?php include_once 'Views/template/header.php'; ?>
+<link rel="stylesheet" type="text/css" href="<?php echo BASE_URL . 'Assets/css/aside-carousel.css' ?>" />
 <section id="general">
 	<div class="container">
 		<section>
@@ -19,27 +20,27 @@
 								Conoce tu área
 							</div>
 							<div class="news-preview">
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam pariatur dolores aperiam quos placeat fugiat aut id vero minus corrupti, amet recusandae aliquid, eos doloribus quae at ea tempore! Pariatur.</p>
+								<p>Aqui podras conocer la estructura de cada area en la empresa.</p>
 							</div>
 						</a>
 					</article>
 
 					<article>
-						<a href="">
+						<a href="<?php echo BASE_URL . 'compartidos'; ?>">
 
 							<div class="news-thumbnail">
 								<img src="<?php echo BASE_URL . 'Assets/img/files.jpg' ?>" />
 							</div>
 							<div class="news-title">
-								Encuentra tus Documentos aca
+								Compartidos
 							</div>
 							<div class="news-preview">
-								<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit architecto voluptates exercitationem voluptate consectetur eius in quasi amet tempore unde. </p>
+								<p>Aqui podras ver los archivos compartidos entre los usuarios. </p>
 							</div>
 						</a>
 					</article>
 					<article>
-						<a href="">
+						<a href="https://www.avo.cl/canal-de-denuncias" target="_blank" rel="noopener noreferrer">
 
 							<div class="news-thumbnail">
 								<img src="<?php echo BASE_URL . 'Assets/img/solicitud-linea.jpeg' ?>" />
@@ -48,7 +49,7 @@
 								Realiza una solicitud en linea
 							</div>
 							<div class="news-preview">
-								<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit architecto voluptates exercitationem voluptate consectetur eius in quasi amet tempore unde. </p>
+								<p>Aqui podras realizar tus solicitudes con Nosotros.</p>
 							</div>
 						</a>
 					</article>
@@ -73,20 +74,38 @@
 			<div class="widget">
 				<div class="widget-title">
 					<div class="widget-title-text">
-						Noticias
+						Bloque Informativo
 					</div>
 					<div class="widget-title-bar"></div>
-					<div class="twitter-container">
-						<a class="twitter-timeline"
-							data-height="400"
-							data-theme="light"
-							data-chrome="noheader nofooter noborders transparent"
-							href="https://twitter.com/avo_transito?ref_src=twsrc%5Etfw">
-						</a>
+				</div>
+				<div class="aside-carousel">
+					<div class="aside-carousel-container">
+						<div class="aside-carousel-slide">
+							<img src="<?php echo BASE_URL; ?>Assets/img/Altas temperaturas.png" alt="Imagen 1">
+						</div>
+						<div class="aside-carousel-slide">
+							<img src="<?php echo BASE_URL; ?>Assets/img/Altas temperaturas2.png" alt="Imagen 2">
+						</div>
+						<div class="aside-carousel-slide">
+							<img src="<?php echo BASE_URL; ?>Assets/img/Hanta virus.png" alt="Imagen 3">
+						</div>
+						<div class="aside-carousel-slide">
+							<img src="<?php echo BASE_URL; ?>Assets/img/EPP.jpg" alt="Imagen 4">
+						</div>
+						<div class="aside-carousel-slide">
+							<img src="<?php echo BASE_URL; ?>Assets/img/AVA.png" alt="Imagen 5">
+						</div>
+						<div class="aside-carousel-slide">
+							<img src="<?php echo BASE_URL; ?>Assets/img/Trabajos en la vía.png" alt="Imagen 6">
+						</div>
+						<div class="aside-carousel-slide">
+							<img src="<?php echo BASE_URL; ?>Assets/img/Trabajos en la via2.jpg" alt="Imagen 7">
+						</div>
+
 					</div>
 				</div>
 			</div>
-		</aside>	
+		</aside>
 	</div>
 </section>
 <div class="carousel-wrapper">
@@ -105,4 +124,6 @@
 		</div>
 	</div>
 </div>
-<?php include_once 'Views/templates/footer.php'; ?>
+<script src="<?php echo BASE_URL . 'Assets/js/aside.js'; ?>"></script>
+
+<?php include_once 'Views/template/footer.php'; ?>

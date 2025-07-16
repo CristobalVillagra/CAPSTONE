@@ -4,8 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, user-scalable=0">
-	<!-- Variable base_url -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">	
 	<script>
 		const base_url = '<?php echo BASE_URL; ?>';
 	</script>
@@ -23,7 +22,7 @@
 	<link rel="shortcut icon" type="image/x-icon" href="<?php echo BASE_URL . 'Assets/img/favicon.ico'; ?>">
 	<link rel="stylesheet" href="<?php echo BASE_URL . 'Assets/css/select2.min.css'; ?>">
 
-	
+
 
 	<title><?php echo $data['title']; ?></title>
 </head>
@@ -48,32 +47,23 @@
 							<a href="#servicios" onclick="seleccionar(this)">Servicios</a>
 							<div class="dropdown-content">
 								<div class="dropdown-grid">
-									<a href="#">RRHH</a>
-									<a href="#">Legal</a>
-									<a href="#">Finanzas</a>
-									<a href="#">Gerencia comercial</a>
+
 									<a href="<?php echo BASE_URL . 'sistemas'; ?>">Sistemas y Tecnologia</a>
 									<a href="<?php echo BASE_URL . 'its'; ?>">TI / ITS</a>
-									<a href="#">Comunicaciones</a>
-									<a href="#">Control</a>
-									<a href="#">Gerencia general</a>
 									<a href="<?php echo BASE_URL . 'prevencion'; ?>">Prevención de Riesgos</a>
-									<a href="#">Servicios generales</a>
 									<a href="<?php echo BASE_URL . 'calidad'; ?>">Calidad</a>
-									<a href="#">Medio Ambiente</a>
 								</div>
 							</div>
 
 						</li>
-						<li></li>
 						<li class="dropdown">
-							<a href="#solicitud" onclick="seleccionar(this)">Administracion</a>
+							<a href="#solicitud" onclick="seleccionar(this)">Administración</a>
 							<div class="dropdown-content">
-								<a href="<?php echo BASE_URL . 'files'; ?>">Archivos</a>
+								<a href="<?php echo BASE_URL . 'files'; ?>" class="submenu-trigger">Archivos</a>
 								<a href="<?php echo BASE_URL . 'usuarios'; ?>">Usuarios</a>
-
 							</div>
 						</li>
+
 						<li class="dropdown">
 							<a href="#solicitud" onclick="seleccionar(this)">Solicitud</a>
 							<div class="dropdown-content">

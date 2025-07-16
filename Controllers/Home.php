@@ -61,4 +61,8 @@ class Home extends Controller
         session_destroy();
         header('Location: ' . BASE_URL);
     }
+
+
+   
+
 }

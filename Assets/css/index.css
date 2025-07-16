@@ -7,6 +7,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     overflow: hidden;
+    -moz-text-size-adjust: 100%;
     background-color: #f5f6fa;
 }
 
@@ -175,6 +176,8 @@ form {
     margin: 1rem 0;
     cursor: pointer;
     transition: .5s;
+    -webkit-user-select: none; /* Para Safari */
+    user-select: none; /* Para otros navegadores */
 }
 
 .btn:hover {

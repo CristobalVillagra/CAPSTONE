@@ -1,14 +1,18 @@
 <?php
-class Query extends Conexion {
+class Query extends Conexion
+{
+    protected $pdo;
     protected $con;
     protected $sql;
     protected $datos;
-    
-    public function __construct() {
+
+    public function __construct()
+    {
         parent::__construct();
+        $this->pdo = new Conexion();
         $this->con = $this->conect();
     }
-    
+
     public function select(string $sql, array $params = [])
     {
         try {
@@ -21,7 +25,7 @@ class Query extends Conexion {
             return null;
         }
     }
-    
+
     public function selectAll(string $sql, array $params = [])
     {
         try {
@@ -34,7 +38,7 @@ class Query extends Conexion {
             return null;
         }
     }
-    
+
     public function save(string $sql, array $datos)
     {
         try {
@@ -46,17 +50,23 @@ class Query extends Conexion {
             return 0;
         }
     }
-    
+
     public function insertar(string $sql, array $datos)
     {
         try {
+            $this->sql = $sql;
+            $this->datos = $datos;
             $stmt = $this->con->prepare($sql);
-            $data = $stmt->execute($datos);
-            return $data ? $this->con->lastInsertId() : 0;
+            $data = $stmt->execute($this->datos);
+            if ($data) {
+                $res = $this->con->lastInsertId();
+            } else {
+                $res = 0;
+            }
+            return $res; // ✅ Esto es clave
         } catch (PDOException $e) {
             error_log("Error en insertar: " . $e->getMessage());
             return 0;
         }
     }
 }
-?>

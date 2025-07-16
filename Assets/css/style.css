@@ -47,7 +47,20 @@ header {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     z-index: 1;
+    left: 0;
+    transform: translateX(-10px);
+    /* Pre-posicionado para animar */
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    opacity: 0;
 }
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    transform: translateX(10px);
+    /* Desliza hacia la derecha */
+    opacity: 1;
+}
+
 
 .dropdown-content a {
     color: #fff;
@@ -59,19 +72,15 @@ header {
     border-bottom: 1px solid #eee;
 }
 
-.dropdown-content a:last-child {
-    border-bottom: none;
-}
+
 
 .dropdown-content a:hover {
     background-color: #39aae1;
     transform: none;
 }
 
-.dropdown:hover .dropdown-content {
-    display: block;
-    animation: fadeIn 0.3s ease;
-}
+
+
 
 .menu-mobile {
 
@@ -180,8 +189,6 @@ nav a:hover {
     color: #fff;
     font-size: 60px;
     text-shadow: 0px 1px 0px #727272;
-    margin: 0;
-    padding: 0;
     margin-top: 80px;
     max-width: 300px;
 }
@@ -920,46 +927,6 @@ footer .widget-contact {
         margin-top: 420px;
     }
 }
-
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-/* Estilos para el Twitter Timeline en el widget */
-.twitter-container {
-    width: 100%;
-    height: 500px;
-    height: auto;
-    padding: 50px;
-    background: #e9e7e7f1;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.twitter-container .twitter-timeline {
-    width: 100% !important;
-}
-
-.twitter-timeline-rendered {
-    margin: 0 !important;
-}
-
-/* Ajustes responsivos para el timeline */
-@media (max-width: 768px) {
-    .twitter-container {
-        padding: 15px;
-    }
-}
-
 
 /* User Info Styles */
 .user-info {

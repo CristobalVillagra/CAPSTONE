@@ -42,19 +42,22 @@ class Usuarios extends Controller
         die();
     }
 
+
     public function registrar()
     {
-        $nombre   = isset($_POST['nombre']) ? trim(htmlspecialchars($_POST['nombre'])) : '';
-        $apellido = isset($_POST['apellido']) ? trim(htmlspecialchars($_POST['apellido'])) : '';
-        $username = isset($_POST['username']) ? trim(htmlspecialchars($_POST['username'])) : '';
-        $telefono = isset($_POST['telefono']) ? trim($_POST['telefono']) : '';
-        $password = isset($_POST['password']) ? trim($_POST['password']) : '';
-        $rol      = isset($_POST['rol']) ? trim(htmlspecialchars($_POST['rol'])) : '';
-        $id_usuario = isset($_POST['id_usuario']) ? trim($_POST['id_usuario']) : '';
+        $nombre      = $_POST['nombre'] ?? '';
+        $apellido    = $_POST['apellido'] ?? '';
+        $username    = $_POST['username'] ?? '';
+        $telefono    = $_POST['telefono'] ?? '';
+        $password    = $_POST['password'] ?? '';
+        $rol         = $_POST['rol'] ?? '';
+        $usuario_id  = $_POST['usuario_id'] ?? '';
+
+
         if (empty($nombre) || empty($apellido) || empty($username) || empty($telefono) || empty($password) || empty($rol)) {
             $res = array('tipo' => 'warning', 'mensaje' => 'Todos los campos son obligatorios');
         } else {
-            if ($id_usuario == '') {
+            if ($usuario_id == '') {
                 // Comprobar si el usuario (correo) ya existe
                 $verificarCorreo = $this->model->verificarUsuario('username', $username, 0);
                 if (empty($verificarCorreo)) {
@@ -76,13 +79,13 @@ class Usuarios extends Controller
                 }
             } else {
                 // Comprobar si el usuario (correo) ya existe
-                $verificarCorreo = $this->model->verificarUsuario('username', $username, $id_usuario);
+                $verificarCorreo = $this->model->verificarUsuario('username', $username, $usuario_id);
                 if (empty($verificarCorreo)) {
                     // Comprobar si el teléfono ya existe
-                    $verificarTel = $this->model->verificarUsuario('telefono', $telefono, $id_usuario);
+                    $verificarTel = $this->model->verificarUsuario('telefono', $telefono, $usuario_id);
                     if (empty($verificarTel)) {
                         $hash = password_hash($password, PASSWORD_DEFAULT);
-                        $data = $this->model->modificar($nombre, $apellido, $username, $telefono, $hash, $rol, $id_usuario);
+                        $data = $this->model->modificar($nombre, $apellido, $username, $telefono, $hash, $rol, $usuario_id);
                         if ($data == 1) {
                             $res = array('tipo' => 'success', 'mensaje' => 'Usuario modificado');
                         } else {

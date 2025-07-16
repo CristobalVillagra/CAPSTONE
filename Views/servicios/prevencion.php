@@ -1,4 +1,4 @@
-<?php include_once 'Views/templates/header.php'; ?>
+<?php include_once 'Views/template/header.php'; ?>
 <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL . 'Assets/css/aside-carousel.css' ?>" />
 <section id="general">
     <div>
@@ -102,4 +102,4 @@
 </section>
 <script src="<?php echo BASE_URL . 'Assets/js/aside.js'; ?>"></script>
 
-<?php include_once 'Views/templates/footer.php'; ?>
+<?php include_once 'Views/template/footer.php'; ?>

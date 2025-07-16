@@ -135,6 +135,8 @@
 
 <!-- Incluye Bootstrap y DataTables -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
 
@@ -144,9 +146,8 @@
 <script src="<?php echo BASE_URL . 'Assets/js/script.js'; ?>"></script>
 <script type="text/javascript" src="<?php echo BASE_URL . 'Assets/plugins/DataTables/datatables.min.js'; ?>"></script>
 <script src="<?php echo BASE_URL . 'Assets/js/custom.js'; ?>"></script>
-<script src="<?php echo BASE_URL . 'Assets/js/files.js'; ?>"></script>
+
 <script src="<?php echo BASE_URL . 'Assets/js/select2.min.js';?>"></script>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 <!-- Scripts específicos de la página -->

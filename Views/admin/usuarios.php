@@ -1,9 +1,9 @@
-<?php include_once 'Views/templates/header.php'; ?>
+<?php include_once 'Views/template/header.php'; ?>
 <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL . 'Assets/css/files.css' ?>" />
 <div class="container-fluid">
     <!-- Encabezado -->
     <div class="row mb-4">
-        <div class="col">
+        <div class="col" id="app-content">
             <div class="page-header d-flex justify-content-between align-items-center">
                 <h1 class="h2"><?php echo $data['title']; ?></h1>
                 <div class="d-flex align-items-center">
@@ -55,10 +55,10 @@
                     <h5 class="modal-title" id="modalUsuarioLabel">
                         <i class="fas fa-user"></i> Nuevo Usuario
                     </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
                 <form id="frmUsuarios" autocomplete="off">
-                    <input type="hidden" name="id_usuario" id="id_usuario">
+                    <input type="hidden" name="usuario_id" id="usuario_id">
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-6 mb-3">
@@ -67,6 +67,7 @@
                                     <span class="input-group-text"><i class="fa-solid fa-list-ul"></i></span>
                                     <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" required>
                                 </div>
+                                <div class="invalid-feedback">Ingrese un nombre válido.</div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="apellido">Apellido</label>
@@ -74,6 +75,7 @@
                                     <span class="input-group-text"><i class="fa-solid fa-list-ul"></i></span>
                                     <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido" required>
                                 </div>
+                                <div class="invalid-feedback">Ingrese un apellido válido.</div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="username">Correo</label>
@@ -81,20 +83,23 @@
                                     <span class="input-group-text"><i class="fa-solid fa-user-plus"></i></span>
                                     <input type="email" class="form-control" name="username" id="username" placeholder="Correo" required>
                                 </div>
+                                <div class="invalid-feedback">Ingrese un correo válido.</div>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="telefono">Telefono</label>
+                                <label for="telefono">Teléfono</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="fa-solid fa-mobile"></i></span>
-                                    <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Telefono" required>
+                                    <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Teléfono" required pattern="\d{9}">
                                 </div>
+                                <div class="invalid-feedback">Ingrese un teléfono válido (9 dígitos).</div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="password">Contraseña</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
-                                    <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña" required>
+                                    <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña" required minlength="6">
                                 </div>
+                                <div class="invalid-feedback">La contraseña debe tener al menos 6 caracteres.</div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="rol">Rol de Usuario</label>
@@ -119,4 +124,5 @@
 
 </div>
 
-<?php include_once 'Views/templates/footer.php'; ?>
+
+<?php include_once 'Views/template/footer.php'; ?>

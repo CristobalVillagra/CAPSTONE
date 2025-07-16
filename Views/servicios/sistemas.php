@@ -1,4 +1,4 @@
-<?php include_once 'Views/templates/header.php'; ?>
+<?php include_once 'Views/template/header.php'; ?>
 <section id="general">
     <div>
         <!-- Título -->
@@ -77,4 +77,4 @@
    
 </section>
 
-<?php include_once 'Views/templates/footer.php'; ?>
+<?php include_once 'Views/template/footer.php'; ?>

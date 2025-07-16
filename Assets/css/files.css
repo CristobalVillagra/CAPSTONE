@@ -65,7 +65,8 @@
     font-weight: 400;
     text-align: center;
     vertical-align: middle;
-    user-select: none;
+    -webkit-user-select: none; /* Compatibilidad con Safari */
+    user-select: none; /* Para otros navegadores */
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     line-height: 1.5;
@@ -77,13 +78,17 @@
     color: #3182ce;
     border: 1px solid #3182ce;
     background-color: transparent;
-    position: top;
+    position: relative; /* 'top' no es una propiedad válida */
 }
 
 .btn-outline-primary:hover {
     color: #fff;
     background-color: #3182ce;
     border-color: #3182ce;
+}
+div:where(.swal2-icon) {
+    -webkit-user-select: none; /* Compatibilidad con Safari */
+    user-select: none; /* Para otros navegadores */
 }
 
 .mb-3 {

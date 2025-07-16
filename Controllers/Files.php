@@ -23,7 +23,7 @@ class Files extends Controller
         $data['script'] = 'files.js';
         $data['active'] = 'recent';
         $carpetas = $this->model->getCarpetas($this->usuario_id);
-        $data['archivos'] = $this->model->getArchivosRecientes($this->usuario_id);
+        $data['archivos'] = $this->model->getArchivosRecientes($this->usuario_id) ?? [];
         for ($i = 0; $i < count($carpetas); $i++) {
             $carpetas[$i]['color'] = substr(md5($carpetas[$i]['id']), 0, 6);
             $carpetas[$i]['fecha'] = time_ago(strtotime($carpetas[$i]['fecha_create']));
@@ -64,6 +64,7 @@ class Files extends Controller
         $tmp = $archivo['tmp_name'];
         $tipo = $archivo['type'];
         $data = $this->model->subirarchivo($name, $tipo, $id_carpeta);
+
         if ($data > 0) {
             $destino = 'Assets/archivos';
             if (!file_exists($destino)) {
@@ -76,50 +77,54 @@ class Files extends Controller
             move_uploaded_file($tmp, $carpetas . '/' . $name);
             $res = array('tipo' => 'success', 'mensaje' => 'Archivo subido con éxito');
         } else {
-            if (!isset($_FILES['archivo']) || $_FILES['archivo']['error'] != UPLOAD_ERR_OK) {
-                $res = ['tipo' => 'error', 'mensaje' => 'Error al subir archivo'];
-                echo json_encode($res, JSON_UNESCAPED_UNICODE);
-                exit;
-            }
+            $res = ['tipo' => 'error', 'mensaje' => 'Error al registrar archivo en la base de datos'];
         }
+
         echo json_encode($res, JSON_UNESCAPED_UNICODE);
         die();
     }
 
-    public function eliminar($id)
-    {
-        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {  
-            $res = ['tipo' => 'error', 'mensaje' => 'Método no permitido'];
-            echo json_encode($res, JSON_UNESCAPED_UNICODE);
-            exit;
-        }
 
 
-        $data = $this->model->eliminar($id);
-        if ($data) {
-            $res = ['tipo' => 'success', 'mensaje' => 'Archivo eliminado con éxito'];
-        } else {
-            $res = ['tipo' => 'error', 'mensaje' => 'Error al eliminar'];
-        }
-        echo json_encode($res, JSON_UNESCAPED_UNICODE);
-        exit;
-    }
-
-    public function editar($id)
-    {
-        $data = $this->model->getFile($id);
-        echo json_encode($data, JSON_UNESCAPED_UNICODE);
-        exit;
-    }
 
     public function ver($id_carpeta)
     {
         $data['title'] = 'Listado de archivos';
         $data['script'] = 'files.js';
-        $data['archivos'] = $this->model->getArchivos($id_carpeta, $this->usuario_id);
+        $data['active'] = 'detail';
+        $data['archivos'] = $this->model->getArchivos($id_carpeta, $this->usuario_id) ?? [];
         $this->views->getView('files', 'archivos', $data);
     }
 
-    // Formato de fecha 
-   
+
+    public function verDetalle($id_carpeta)
+    {
+
+        $data['title'] = 'Archivos compartidos';
+        $data['id_carpeta'] = $id_carpeta;
+        $data['script'] = 'details.js';
+        $data['carpeta'] = $this->model->getCarpeta($id_carpeta);
+        if (empty($data['carpeta'])) {
+            echo 'Pagina no encontrada';
+            exit;
+        }
+        $this->views->getView('admin', 'detalle', $data);
+    }
+    public function listarDetalle($id_carpeta)
+    {
+        $data = $this->model->getArchivosCompartidos($id_carpeta);
+        for ($i = 0; $i < count($data); $i++) {
+            if ($data[$i]['estado'] == 0) {
+                $data[$i]['estado'] = '<span class="badge bg-danger">Se Rechazo y Elimino ' . $data[$i]['eliminado'] . '</span>';
+                $data[$i]['acciones'] = '';
+            } else {
+
+                $data[$i]['estado'] = '<span class="badge bg-success">Compartido</span>';
+                $data[$i]['acciones'] = '<button class="btn btn-danger btn-sm" onclick="eliminarDetalle(' .
+                    $data[$i]['id'] . ')">Eliminar</button>';
+            }
+        }
+        echo json_encode($data, JSON_UNESCAPED_UNICODE);
+        die();
+    }
 }

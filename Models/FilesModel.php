@@ -17,7 +17,7 @@ class FilesModel extends Query
 
     public function getArchivosRecientes($usuario_id)
     {
-        $sql = "SELECT a.* FROM archivos a INNER JOIN carpetas c ON a.id_carpeta = c.id WHERE c.usuario_id  = $usuario_id  ORDER BY a.id DESC LIMIT 10";
+        $sql = "SELECT a.* FROM archivos a INNER JOIN carpetas c ON a.id_carpeta = c.id WHERE c.usuario_id  = $usuario_id AND a.estado = 1 ORDER BY a.id DESC LIMIT 10";
         return $this->selectAll($sql);
     }
 
@@ -27,6 +27,12 @@ class FilesModel extends Query
         return $this->selectAll($sql);
     }
 
+    public function delete($id_archivo)
+    {
+        $sql = "UPDATE archivos SET estado = 0 WHERE id = ?";
+        $datos = array($id_archivo);
+        return $this->save($sql, $datos); // este debe retornar 1 si fue exitoso
+    }
 
 
     // CARPETAS
@@ -52,11 +58,17 @@ class FilesModel extends Query
         $datos = array($nombre, $usuario_id);
         return $this->insertar($sql, $datos);
     }
-
-    public function eliminarCarpeta($id)
+      public function getArchivosCompartidos($id_carpeta)
     {
-        $sql = "UPDATE carpetas SET estado = ? WHERE id = ?";
-        $datos = array(0, $id);
-        return $this->save($sql, $datos);
+        $sql = "SELECT d.id, d.username, d.estado , d.eliminado, a.nombre 
+                FROM detalle_archivos d 
+                INNER JOIN archivos a ON d.id_archivo = a.id INNER JOIN carpetas c ON a.id_carpeta = c.id
+                WHERE a.id_carpeta = $id_carpeta";
+        return $this->selectAll($sql);
+    }
+
+    public function getCarpeta($id) {
+        $sql = "SELECT * FROM carpetas WHERE id = $id ";
+        return $this->select($sql);
     }
 }

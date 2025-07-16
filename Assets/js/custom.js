@@ -1,3 +1,15 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const search = document.getElementById('search');
+  if (search) {
+    search.addEventListener("keyup", function (e) {
+      if (e.target.value.length > 2) {
+        buscarArchivos(e.target.value);
+      }
+    });
+  }
+});
+
+
 
 function alertaPersonalizada(tipo, mensaje) {
   Swal.fire({
@@ -22,7 +34,7 @@ function eliminarRegistro(title, text, accion, url, table) {
     if (result.isConfirmed) {
       const http = new XMLHttpRequest();
 
-     
+
       http.open("GET", url, true);
 
       http.send();
@@ -33,12 +45,33 @@ function eliminarRegistro(title, text, accion, url, table) {
           const res = JSON.parse(this.responseText);
           alertaPersonalizada(res.tipo, res.mensaje);
           if (res.tipo == 'success') {
-            table.ajax.reload();
-          }  
+            if (table != null) {
+              table.ajax.reload();
+            } else {
+              setTimeout(() => {
+                window.location.reload();
+              }, 1500);
+            }
+
+          }
         }
 
       };
 
     }
   });
+}
+
+
+function buscarArchivos(valor) {
+  const url = base_url + 'archivos/busqueda/' + valor;
+  const http = new XMLHttpRequest();
+  http.open("GET", url, true);
+  http.send(search);
+  http.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      //const res = JSON.parse(this.responseText);
+      console.log(this.responseText);
+    }
+  }
 }

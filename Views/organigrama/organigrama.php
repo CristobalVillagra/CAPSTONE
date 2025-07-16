@@ -1,4 +1,4 @@
-<?php include_once 'Views/templates/header.php'; ?>
+<?php include_once 'Views/template/header.php'; ?>
 
 <link rel="stylesheet" href="<?php echo BASE_URL . 'Assets/css/organigrama.css'; ?>">
 
@@ -25,4 +25,4 @@
     </div>
 </div>
 
-<?php include_once 'Views/templates/footer.php'; ?>
+<?php include_once 'Views/template/footer.php'; ?>

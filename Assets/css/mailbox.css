@@ -1,0 +1,425 @@
+* {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+
+.row {
+    --bs-gutter-x: 0 !important;
+}
+
+.top-nav {
+    height: 60px;
+    background-color: #0079c7;
+    display: flex;
+}
+
+.logo {
+    flex-basis: 8%;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.logo p {
+    font-size: 32px;
+    font-weight: 500;
+    color: #fff;
+    padding: 5px;
+}
+
+.active-user {
+    color: #ffffff;
+    padding: 2px 10px;
+    cursor: pointer;
+}
+
+.active-user div {
+    font-size: 12px;
+    text-align: right;
+    opacity: 0.8;
+}
+
+.user-img {
+    display: flex;
+    border-radius: 50%;
+    background-color: #e2f7fb;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.app {
+    display: flex;
+    width: 100%;
+}
+
+.side-nav {
+    flex-basis: 5%;
+    background-color: #39aae1;
+    padding-right: 0;
+    padding-top: 10px;
+}
+
+.app-container {
+   
+    width: 100%;
+
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease-in;
+}
+
+.menu-item:hover,
+.menu-item.active {
+    background-color: #39aae1;
+}
+
+.menu-item i {
+    font-size: 28px;
+    opacity: 0.6;
+    color: #ffffff;
+}
+
+.menu-item p {
+    font-size: 12px;
+    color: #ffffff;
+    margin-bottom: 0;
+}
+
+.folders-bar {
+    display: flex;
+    width: 100%;
+
+
+}
+
+.folders {
+    flex-basis: 20%;
+    background-color: #eee;
+}
+
+.folders-bar .main {
+    flex-basis: 100%;
+}
+
+.folders .folder-name {
+    padding: 4px 15px;
+    background-color: #cccccc;
+    font-weight: 500;
+}
+
+.folders .folder-name.active {
+    background-color: #39aae1;
+    color: #ffffff;
+}
+
+.folders .folder-item {
+    padding: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.folder-item:hover {
+    background-color: #fbfcfc;
+    color: #0079c7;
+}
+
+.folder-item.active {
+    color: #39aae1;
+}
+
+.folder-item.active span {
+    background-color: #39aae1;
+    color: #ffffff;
+}
+
+.badge-custom {
+    background-color: #ccc;
+    border-radius: 50%;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.main {
+    width: 100%;
+    max-width: 100vw;
+    padding: 10px;
+}
+
+.title {
+    color: #0079c7;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.email-btn {
+    display: flex;
+    align-items: center;
+    background-color: #172020;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #ffffff;
+    width: fit-content;
+    border: 2px solid #000000;
+}
+
+.email-btn i {
+    margin-right: 5px;
+}
+
+.email-btn:hover {
+    background-color: #f2ecec;
+    color: #000000;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #cccccc;
+    border-radius: 5px;
+}
+
+.tabs .tab {
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab.active,
+.tab:hover {
+    background-color: #eee;
+}
+
+
+#emails {
+    max-height: calc(100vh - 190px);
+    overflow-y: scroll;
+    border-right: 1px solid #eee;
+    flex-basis: 38%;
+    flex-wrap: wrap;
+}
+
+#reader {
+    flex-basis: 62%;
+}
+
+.email {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.email.active,
+.email:hover {
+    background-color: #cdeaff;
+}
+
+.email.active .subject {
+    color: #000000;
+}
+
+
+.email.active .message {
+    color: #000000;
+}
+
+.email div {
+    margin: 5px;
+    cursor: pointer;
+}
+
+.email.unread {
+    border-left: 4px solid #1689f3;
+}
+
+.email.unread .subject {
+    color: #000000;
+}
+
+.email.unread .message {
+    color: #1689f3;
+}
+
+.email .user-img {
+    border-radius: 50%;
+    background-color: #e2f7fb;
+    padding: 10px;
+    color: #2c99e7;
+}
+
+.preview .subject {
+    color: #7b7b7b;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.preview .message {
+    color: #ccc;
+    font-size: 12px;
+}
+
+.timestamp {
+    align-self: flex-end;
+    font-size: 11px;
+    color: #908888;
+    padding-bottom: 8px;
+}
+
+.email-info {
+    background-color: #f0f0f0;
+    border-radius: 3px;
+}
+
+.email-info .image {
+    background-color: #cccccc;
+    border-radius: 50%;
+    background-color: #e2f7fb;
+    padding: 10px;
+    color: #2c99e7;
+    height: 50px;
+    width: 50px;
+}
+
+.metadata {
+    padding-left: 16px;
+}
+
+.metadata .from {
+    font-weight: 14px;
+    font-weight: 500;
+}
+
+.metadata .to,
+.metadata .cc {
+    font-size: 12px;
+}
+
+
+.email-actions i {
+    margin: 2px 6px;
+    color: #2c99e7;
+    cursor: pointer;
+}
+
+.datetime {
+    font-size: 12px;
+    color: #817c7c;
+}
+
+.email-content p {
+    font-size: 12px;
+    font-weight: 500;
+    border-bottom: 1px solid #c4c3c3;
+    padding: 10px;
+}
+
+.attachment {
+    background-color: #fafafa;
+    padding: 2px 5px;
+    width: fit-content;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.attachment:hover {
+    background-color: #eee;
+}
+
+.attachment i,
+.attachment span {
+    margin: 6px;
+}
+
+.action-btns {
+    position: absolute;
+    bottom: 130px;
+    left: 10px;
+}
+
+.act-btn {
+    background-color: #fafafa;
+    padding: 5px 12px;
+    width: fit-content;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 4px;
+    cursor: pointer;
+}
+
+.act-btn:hover {
+    background-color: #eee;
+}
+
+.act-btn i {
+    margin-right: 6px;
+    color: #1689f3;
+}
+
+@media screen and (max-width: 479px) {
+    #emails {
+        flex-basis: 100% !important;
+    }
+}
+
+/* Asegura que el contenedor padre ocupe toda la altura visible */
+.split-reader {
+    height: calc(80vh - 80px);
+    /* o lo que necesites descontar de header/footer */
+}
+
+/* Lista de emails: columna izquierda */
+
+
+/* Detalle: ocupa el resto */
+#content-info {
+    flex-basis: 65%;
+    /* 65% de ancho en pantallas grandes */
+    max-width: 65%;
+    overflow-y: auto;
+}
+
+/* El “reader” dentro de content-info puede ocupar 100% de ancho */
+#reader {
+    width: 100%;
+    height: 100%;
+}
+
+/* Ajustes responsivos */
+/* En pantallas medias y chicas, vuelca en columna */
+@media (max-width: 768px) {
+    .main {
+        padding: 5px;
+    }
+
+    .split-reader {
+        flex-direction: column;
+        height: auto;
+    }
+
+    #emails,
+    #content-info {
+        flex-basis: 100% !important;
+        max-width: 100%;
+    }
+
+    /* Opcional: añade algo de separación */
+    #content-info {
+        margin-top: 1rem;
+    }
+}
